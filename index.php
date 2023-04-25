@@ -18,7 +18,7 @@ $rifle_data = [
             'scope_pos_x' => 0,
             'scope_pos_y' => 210,
             'silencer_pos_x' => 300,
-            'silencer_pos_y' => 210,
+            'silencer_pos_y' => 203,
             'grip_pos_x' => 0,
             'grip_pos_y' => 0,
             'stock_pos_x' => 0,
@@ -128,6 +128,7 @@ $grip_data = [
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
@@ -156,70 +157,70 @@ $grip_data = [
             Auswahloptionen
             <hr>
             Modell:
-            <select id="rifle" name="rifle">
-            <option value="-1">keine Auswahl</option>
-            <?php
-            foreach ($rifle_data as $rifle) {
-                echo '<option value="'.$rifle['id'].'">'.$rifle['model'].'</option>';
-            }
-            ?>
-        </select>
+            <select class="form-select" id="rifle" name="rifle">
+                <option value="-1">keine Auswahl</option>
+                <?php
+                foreach ($rifle_data as $rifle) {
+                    echo '<option value="'.$rifle['id'].'">'.$rifle['model'].'</option>';
+                }
+                ?>
+            </select>
             <hr>
             <hr>
             Optik:<br>
-            <select id="optic" name="optic">
-            <option value="-1">keine Auswahl</option>
-            <?php
-            foreach ($optics_data as $optic) {
-                echo '<option value="'.$optic['id'].'">'.$optic['name'].'</option>';
-            }
-            ?>
-        </select>
+            <select class="form-select" id="optic" name="optic">
+                <option value="-1">keine Auswahl</option>
+                <?php
+                foreach ($optics_data as $optic) {
+                    echo '<option value="'.$optic['id'].'">'.$optic['name'].'</option>';
+                }
+                ?>
+            </select>
             <hr>
             Mündung:<br>
-            <select id="muzzle" name="muzzle">
-            <option value="-1">keine Auswahl</option>
-            <?php
-            foreach ($muzzle_data as $muzzle) {
-                echo '<option value="'.$muzzle['id'].'">'.$muzzle['name'].'</option>';
-            }
-            ?>
-        </select>
+            <select class="form-select" id="muzzle" name="muzzle">
+                <option value="-1">keine Auswahl</option>
+                <?php
+                foreach ($muzzle_data as $muzzle) {
+                    echo '<option value="'.$muzzle['id'].'">'.$muzzle['name'].'</option>';
+                }
+                ?>
+            </select>
             <hr>
             Schaft:<br>
-            <select id="stock" name="stock">
-            <option value="-1">keine Auswahl</option>
-            <?php
-            foreach ($stock_data as $stock) {
-                echo '<option value="'.$stock['id'].'">'.$stock['name'].'</option>';
-            }
-            ?>
-        </select>
+            <select class="form-select " id="stock" name="stock">
+                <option value="-1">keine Auswahl</option>
+                <?php
+                foreach ($stock_data as $stock) {
+                    echo '<option value="'.$stock['id'].'">'.$stock['name'].'</option>';
+                }
+                ?>
+            </select>
             <hr>
             Magazin:<br>
-            <select id="mag" name="mag">
-            <option value="-1">keine Auswahl</option>
-            <?php
-            foreach ($mag_data as $mag) {
-                echo '<option value="'.$mag['id'].'">'.$mag['name'].'</option>';
-            }
-            ?>
-        </select>
+            <select class="form-select" id="mag" name="mag">
+                <option value="-1">keine Auswahl</option>
+                <?php
+                foreach ($mag_data as $mag) {
+                    echo '<option value="'.$mag['id'].'">'.$mag['name'].'</option>';
+                }
+                ?>
+            </select>
             <hr>
             Frontgriff:<br>
-            <select id="grip" name="grip">
-            <option value="-1">keine Auswahl</option>
-            <?php
-            foreach ($grip_data as $grip) {
-                echo '<option value="'.$grip['id'].'">'.$grip['name'].'</option>';
-            }
-            ?>
-        </select>
+            <select class="form-select" id="grip" name="grip">
+                <option value="-1">keine Auswahl</option>
+                <?php
+                foreach ($grip_data as $grip) {
+                    echo '<option value="'.$grip['id'].'">'.$grip['name'].'</option>';
+                }
+                ?>
+            </select>
             <br><br>
-            <input type="submit" value="Anzeigen">
+            <input class="btn btn-outline-primary" type="submit" value="Anzeigen">
         </form>
     </div>
-    <div id="display" style="text-align: center; height: 400px">
+    <div id="display">
         <br><br><br><br>
         <?php
         if(isset($_GET['show'])) {
@@ -248,6 +249,11 @@ $grip_data = [
         }
         ?>
      </div>
+    <hr>
+    <div>
+        Übersicht:<br>
+        .....
+    </div>
 </div>
 </body>
 </html>
