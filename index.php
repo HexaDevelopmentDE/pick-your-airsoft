@@ -149,13 +149,11 @@ $grip_data = [
 </script>
 
 <h1 style="text-align: center">Airsoft Customizer</h1>
-<h4 style="text-align: end">by hexa.airsoft</h4>
+<h4 style="text-align: end">by <a href="https://linktr.ee/hexa.airsoft" style="text-decoration: none; color: white">hexa.airsoft</a></h4>
 <br>
 <div id="frame">
     <div id="menu">
         <form action="?show=1" method="post">
-            Auswahloptionen
-            <hr>
             Modell:
             <select class="form-select" id="rifle" name="rifle">
                 <option value="-1">keine Auswahl</option>
@@ -165,7 +163,6 @@ $grip_data = [
                 }
                 ?>
             </select>
-            <hr>
             <hr>
             Optik:<br>
             <select class="form-select" id="optic" name="optic">
@@ -217,7 +214,7 @@ $grip_data = [
                 ?>
             </select>
             <br><br>
-            <input class="btn btn-outline-primary" type="submit" value="Anzeigen">
+            <input class="btn btn-outline-warning" type="submit" value="Anzeigen">
         </form>
     </div>
     <div id="display">
@@ -249,7 +246,7 @@ $grip_data = [
         }
         ?>
      </div>
-    <hr>
+    <br>
     <div>
         Übersicht:<br>
         .....
