@@ -2,13 +2,13 @@
 $rifle_data = [
     0 => [
         'id' => 0,
-        'model' => 'HK416',
+        'name' => 'HK416',
         'model_data' => [
             'producer' => 'Heckler und Koch',
             'barrel_length' => '',
             'material' => 'Kunststoff',
             'energy' => 0.5,
-            'energy_source' => 'electric',
+            'energy_source' => 'Strom',
             'power_supply' => '7.4',
             'color' => 'black',
             'link' => '',
@@ -159,7 +159,7 @@ $grip_data = [
                 <option value="-1">keine Auswahl</option>
                 <?php
                 foreach ($rifle_data as $rifle) {
-                    echo '<option value="'.$rifle['id'].'">'.$rifle['model'].'</option>';
+                    echo '<option value="'.$rifle['id'].'">'.$rifle['name'].'</option>';
                 }
                 ?>
             </select>
@@ -214,42 +214,144 @@ $grip_data = [
                 ?>
             </select>
             <br><br>
-            <input class="btn btn-outline-warning" type="submit" value="Anzeigen">
+            <input class="btn btn-outline-warning" type="submit" value="Anzeigen" style="width: 100%">
         </form>
     </div>
     <div id="display">
-        <br><br><br><br>
-        <?php
-        if(isset($_GET['show'])) {
-            $rifle = $_POST['rifle'];
-            $optic = $_POST['optic'];
-            $muzzle = $_POST['muzzle'];
-            $stock = $_POST['stock'];
-            $mag = $_POST['mag'];
-            $grip = $_POST['grip'];
+        <div id="showcase">
+            <br><br><br><br>
+            <div>
+                <?php
+                if(isset($_GET['show'])) {
+                    $rifle = $_POST['rifle'];
+                    $optic = $_POST['optic'];
+                    $muzzle = $_POST['muzzle'];
+                    $stock = $_POST['stock'];
+                    $mag = $_POST['mag'];
+                    $grip = $_POST['grip'];
 
-            echo '<script type="application/javascript"> setActive('.$rifle.', '.$optic.', '.$muzzle.', '.$stock.', '.$mag.', '.$grip.')</script>';
+                    echo '<script type="application/javascript"> setActive('.$rifle.', '.$optic.', '.$muzzle.', '.$stock.', '.$mag.', '.$grip.')</script>';
 
-            if ($rifle != -1) {
-                echo '<img src="'.$rifle_data[$rifle]['image_data']['image_url'].'" style="position: relative; z-index: 100;">';
-                echo '<br>';
-                if ($optic != -1) echo '<img src="'.$optics_data[$optic]['image_data']['image_url'].'" height="'.$optics_data[$optic]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['scope_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['scope_pos_x'].'px;">';
-                echo '<br>';
-                if ($muzzle != -1)echo '<img src="'.$muzzle_data[$muzzle]['image_data']['image_url'].'" height="'.$muzzle_data[$muzzle]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
-                echo '<br>';
-                if ($stock != -1)echo '<img src="'.$stock_data[$stock]['image_data']['image_url'].'" height="'.$stock_data[$stock]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
-                echo '<br>';
-                if ($mag != -1)echo '<img src="'.$mag_data[$mag]['image_data']['image_url'].'" height="'.$mag_data[$mag]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
-                echo '<br>';
-                if ($grip != -1)echo '<img src="'.$grip_data[$grip]['image_data']['image_url'].'" height="'.$grip_data[$grip]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
+                    if ($rifle != -1) {
+                        echo '<img src="'.$rifle_data[$rifle]['image_data']['image_url'].'" style="position: relative; z-index: 100;">';
+                        echo '<br>';
+                        if ($optic != -1) echo '<img src="'.$optics_data[$optic]['image_data']['image_url'].'" height="'.$optics_data[$optic]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['scope_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['scope_pos_x'].'px;">';
+                        echo '<br>';
+                        if ($muzzle != -1)echo '<img src="'.$muzzle_data[$muzzle]['image_data']['image_url'].'" height="'.$muzzle_data[$muzzle]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
+                        echo '<br>';
+                        if ($stock != -1)echo '<img src="'.$stock_data[$stock]['image_data']['image_url'].'" height="'.$stock_data[$stock]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
+                        echo '<br>';
+                        if ($mag != -1)echo '<img src="'.$mag_data[$mag]['image_data']['image_url'].'" height="'.$mag_data[$mag]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
+                        echo '<br>';
+                        if ($grip != -1)echo '<img src="'.$grip_data[$grip]['image_data']['image_url'].'" height="'.$grip_data[$grip]['image_data']['height'].'" style="position: relative; z-index: 150; bottom: '.$rifle_data[$rifle]['image_data']['silencer_pos_y'].'px; right: '.$rifle_data[$rifle]['image_data']['silencer_pos_x'].'px;">';
+                    }
+                }
+                ?>
+            </div>
+        </div>
+        <br>
+        <div id="overview">
+            <?php
+            if(isset($_GET['show'])) {
+                if ($rifle != -1) {
+                    echo "<label><b>Informationen zur ".$rifle_data[$rifle]["name"].":</b></label>";
+                    echo "<table>
+                            <tr>
+                                <td>Hersteller: </td>
+                                <td>".$rifle_data[$rifle]["model_data"]["producer"]."</td>
+                            </tr>
+                            <tr>
+                                <td>Antriebsart: </td>
+                                <td>".$rifle_data[$rifle]["model_data"]["energy_source"]." (".$rifle_data[$rifle]["model_data"]["power_supply"]." V)</td>
+                            </tr>
+                            <tr>
+                                <td>Energie: </td>
+                                <td>".$rifle_data[$rifle]["model_data"]["energy"]." Joule</td>
+                            </tr>
+                            <tr>
+                                <td>Material: </td>
+                                <td>".$rifle_data[$rifle]["model_data"]["material"]."</td>
+                            </tr>
+                          </table>";
+                }
             }
-        }
-        ?>
-     </div>
-    <br>
-    <div>
-        Übersicht:<br>
-        .....
+            ?>
+            <br>
+            <?php
+            if(isset($_GET['show'])) {
+                if ($rifle != -1) {
+                    $table = '<table class="table table-hover" id="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Element</th>
+                                        <th scope="col">Bezeichnung</th>
+                                        <th scope="col">Kaufmöglichkeiten</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+                    for ($i = 0; $i < 6; $i++) {
+                        switch ($i) {
+                            case 0:
+                                $table .= '<tr>
+                                            <th scope="row">Modell</th>
+                                            <td>'.$rifle_data[$rifle]["name"].'</td>
+                                            <td>'.$rifle_data[$rifle]["model_data"]["link"].'</td>
+                                            </tr>';
+                                break;
+                            case 1:
+                                if ($optic != -1)  {
+                                    $table .= '<tr>
+                                            <th scope="row">Optik</th>
+                                            <td>'.$optics_data[$optic]["name"].'</td>
+                                            <td>'.$optics_data[$optic]["model_data"]["link"].'</td>
+                                            </tr>';
+                                }
+                                break;
+                            case 2:
+                                if ($muzzle != -1)  {
+                                    $table .= '<tr>
+                                            <th scope="row">Mündung</th>
+                                            <td>'.$muzzle_data[$muzzle]["name"].'</td>
+                                            <td>'.$muzzle_data[$muzzle]["model_data"]["link"].'</td>
+                                            </tr>';
+                                }
+                                break;
+                            case 3:
+                                if ($stock != -1)  {
+                                    $table .= '<tr>
+                                            <th scope="row">Schaft</th>
+                                            <td>'.$stock_data[$stock]["name"].'</td>
+                                            <td>'.$stock_data[$stock]["model_data"]["link"].'</td>
+                                            </tr>';
+                                }
+                                break;
+                            case 4:
+                                if ($mag != -1)  {
+                                    $table .= '<tr>
+                                            <th scope="row">Magazin</th>
+                                            <td>'.$mag_data[$mag]["name"].'</td>
+                                            <td>'.$mag_data[$mag]["model_data"]["link"].'</td>
+                                            </tr>';
+                                }
+                                break;
+                            case 5:
+                                if ($grip != -1)  {
+                                    $table .= '<tr>
+                                            <th scope="row">Frontgriff</th>
+                                            <td>'.$grip_data[$grip]["name"].'</td>
+                                            <td>'.$grip_data[$grip]["model_data"]["link"].'</td>
+                                            </tr>';
+                                }
+                                break;
+                        }
+                    }
+                    $table .= "</tbody></table>";
+
+                    echo $table;
+                }
+            }
+            ?>
+        </div>
     </div>
 </div>
 </body>
